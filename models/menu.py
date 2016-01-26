@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-# this file is released under public domain and you can use without limitations
+# -*- coding: utf-8 
+ # This file is released under public domain and you can use without limitations
 
 #########################################################################
 ## Customize your APP title, subtitle and menus here
@@ -11,7 +11,7 @@ response.title = "M2L"
 response.subtitle = 'Maison des Ligues de Lorraine'
 
 ## read more at http://dev.w3.org/html5/markup/meta.name.html
-response.meta.author = 'Maelle Taurand'
+response.meta.author = 'Christopher Pires'
 response.meta.description = 'Portail de la maison des Ligues de Lorraine'
 response.meta.keywords = 'Ligues, Lorraine, Sport'
 response.meta.generator = 'Portail de la maison des Ligues de Lorraine'
