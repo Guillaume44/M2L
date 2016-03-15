@@ -6,7 +6,7 @@ def afficherLesSalles():
     """
     Fournit à la vue HTML la liste de toutes les salles avec l'ensemble des informations
     """
-    rowsSalles =db(db.salle.categorie_id==db.categorie.id).select(db.salle.id,db.salle.nom,db.categorie.nom, orderby=db.categorie.nom) #requête permettant de récupérer les informations des salles
+    rowsSalles =db(db.salle.categorie_id==db.categorie.id).select(db.salle.id,db.salle.nom,db.categorie.nom, db.categorie.heureOuverture, db.categorie.heureOuvertureMinutes, db.categorie.heureFermeture, db.categorie.heureFermetureMinutes, orderby=db.categorie.nom) #requête permettant de récupérer les informations des salles
 
     return locals()
 
@@ -24,9 +24,6 @@ def afficherSallesCategorie():
     rowCateg=db(db.categorie.id==uneCategorie).select(db.categorie.nom,orderby=db.categorie.nom)
     
     nomCateg=rowCateg[0].nom
-	
-	# requête permettant de récupérer les horaires de la catégorie précédemment sélectionnée
-	# rowHeure=db(db.categorie.id==uneCategorie).select(db.categorie.heureOuverture)
     
     # requête permettant de sélectionner les salles de la catégorie précédemment sélectionnée
     rowsSalles =db((db.salle.categorie_id==uneCategorie)&(db.salle.categorie_id==db.categorie.id)).select(db.salle.ALL, db.categorie.heureOuverture, db.categorie.heureOuvertureMinutes, db.categorie.heureFermeture, db.categorie.heureFermetureMinutes)
