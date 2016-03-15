@@ -11,22 +11,25 @@ def afficherLesSalles():
     return locals()
 
 #------------------------------------------------------------------------------------#
-# afficherSallesCategorie
+# afficherSallesCategorie #
 #------------------------------------------------------------------------------------#
 def afficherSallesCategorie():
     """
     Fournit à la vue la liste des salles dont la categorie a été transmise par l'URL dans la variable Select_categ
     """
-    #recupération des varaibles transmises par la requête HTTP
+    #recupération des variables transmises par la requête HTTP
     uneCategorie=request.vars.Select_categ
 
     # requête permettant de récupérer le nom de la catégorie précédemment sélectionnée
     rowCateg=db(db.categorie.id==uneCategorie).select(db.categorie.nom,orderby=db.categorie.nom)
     
     nomCateg=rowCateg[0].nom
+	
+	# requête permettant de récupérer les horaires de la catégorie précédemment sélectionnée
+	# rowHeure=db(db.categorie.id==uneCategorie).select(db.categorie.heureOuverture)
     
     # requête permettant de sélectionner les salles de la catégorie précédemment sélectionnée
-    rowsSalles =db((db.salle.categorie_id==uneCategorie)).select(db.salle.ALL)
+    rowsSalles =db((db.salle.categorie_id==uneCategorie)&(db.salle.categorie_id==db.categorie.id)).select(db.salle.ALL, db.categorie.heureOuverture, db.categorie.heureOuvertureMinutes, db.categorie.heureFermeture, db.categorie.heureFermetureMinutes)
 
     return locals()
 
