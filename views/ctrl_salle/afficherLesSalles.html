@@ -12,7 +12,11 @@ Liste des salles </u>
 <td><h6>Categorie</h6></td>
 <td><h6>Heure ouverture</h6></td>
 <td><h6>Heure fermeture</h6></td>
+<<<<<<< HEAD
 <td><h6>Capacité</h6></td>
+=======
+<td><h6>Capacite salle</h6></td>
+>>>>>>> d01aebb92664f74077d57e8067a8844df8be3eab
 </tr>
 {{for uneSalle in response._vars['rowsSalles']:}}
 
@@ -21,7 +25,11 @@ Liste des salles </u>
 <td><i> {{=uneSalle.categorie.nom}}</i></td>
 <td><i> {{=uneSalle.categorie.heureOuverture}}h{{=uneSalle.categorie.heureOuvertureMinutes}}</i></td>
 <td><i> {{=uneSalle.categorie.heureFermeture}}h{{=uneSalle.categorie.heureFermetureMinutes}}</i></td>
+<<<<<<< HEAD
 <td><i>{{=uneSalle.salle.capacite}}</i></td>
+=======
+<td><i> {{=uneSalle.salle.capacite}}</i></td>
+>>>>>>> d01aebb92664f74077d57e8067a8844df8be3eab
 <td><h6>
 {{=A(B('Modifier'),_href=URL('ctrl_salle','modifierSalle',vars=dict(salle=uneSalle.salle.id)))}}
 </h6></td>
