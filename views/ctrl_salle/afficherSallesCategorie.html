@@ -1,9 +1,45 @@
 {{extend 'layout.html'}}
+{{if 'rowsSalles' in globals():}}
 
-{{=BEAUTIFY(response._vars['rowsSalles'])}}
+{{if len(response._vars['rowsSalles']) !=0 :}}
+
+<br/>
+Liste des salles </u> 
+
+<table class='table'>
+<tr>
+<td><h6>ID</h6></td>
+<td><h6>nom</h6></td>
+<td><h6>capacité</h6></td>
+<td><h6>Disponible</h6></td>
+<td><h6>Catégorie</h6></td>
+<td><h6>Heure ouverture</h6></td>
+<td><h6>Heure fermeture</h6></td>
+</tr>
+{{for uneSalle in response._vars['rowsSalles']:}}
+
+<tr>
+<td><i>{{=uneSalle.salle.id}}</i></td>
+<td><i>{{=uneSalle.salle.nom}}</i></td>
+<td><i>{{=uneSalle.salle.capacite}}</i></td>
+<td><i>{{=uneSalle.salle.disponible}}</i></td>
+<td><i>{{=uneSalle.salle.categorie_id}}</i></td>
+<td><i>{{=uneSalle.categorie.heureOuverture}}h{{=uneSalle.categorie.heureOuvertureMinutes}}</i></td>
+<td><i>{{=uneSalle.categorie.heureFermeture}}h{{=uneSalle.categorie.heureFermetureMinutes}}</i></td>
+</tr>
+{{pass}}
+</table>
+<br/>
+{{else:}}
+Aucune salle n'est actuellement disponible
+{{pass}}
+{{else:}}
+{{=BEAUTIFY(response._vars)}}
+{{pass}}
+
 
 
 <p >
     <hr/>
-    {{=A(B('Retour'),_href=URL('default','index'))}}
+    {{=A(B('Retour'),_href=URL('ctrl_salle','index'))}}
 </p>
