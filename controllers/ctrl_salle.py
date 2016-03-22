@@ -26,7 +26,7 @@ def afficherSallesCategorie():
     nomCateg=rowCateg[0].nom
     
     # requête permettant de sélectionner les salles de la catégorie précédemment sélectionnée
-    rowsSalles =db((db.salle.categorie_id==uneCategorie)&(db.salle.categorie_id==db.categorie.id)).select(db.salle.ALL, db.categorie.heureOuverture, db.categorie.heureOuvertureMinutes, db.categorie.heureFermeture, db.categorie.heureFermetureMinutes)
+    rowsSalles =db((db.salle.categorie_id==uneCategorie)&(db.salle.categorie_id==db.categorie.id)).select(db.salle.ALL, db.categorie.heureOuverture, db.categorie.heureOuvertureMinutes, db.categorie.heureFermeture, db.categorie.heureFermetureMinutes, orderby=(db.categorie.nom,db.salle.capacite))
 
     return locals()
 
@@ -89,7 +89,7 @@ def index():
     """
     Fournit à la vue la liste des catégories
     """
-    rowsCateg =db().select(db.categorie.id,db.categorie.nom)    #requête permettant de récupérer les id et nom des catégories
+    rowsCateg =db().select(db.categorie.id,db.categorie.nom, orderby=db.categorie.nom)    #requête permettant de récupérer les id et nom des catégories
 
     return locals()
 
